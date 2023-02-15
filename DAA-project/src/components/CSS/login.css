@@ -1,0 +1,11 @@
+.container-left2{
+    background-color: black;
+    background-image: url(../../assets/building2.jpg);
+    background-size: cover;
+    border-top-left-radius:  30px;
+    border-bottom-left-radius:  30px;
+}
+.container-left2 , .container-right{
+    flex-basis: 50%;
+    text-align: center;
+}

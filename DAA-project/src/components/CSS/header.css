@@ -1,0 +1,64 @@
+*,
+*::after,
+*::before {
+margin: 0;
+box-sizing: border-box;
+}
+
+
+.nav {
+    height: 8vh;
+    background: #383d59
+  }
+  .title{
+    font-size: 23px;
+  }
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    gap: 3rem;
+  }
+  .nav__toggler div {
+    width: 2.5rem;
+    height: 0.2rem;
+    margin: 0.4rem;
+    background: rgb(204, 204, 204);
+    transition: 0.3s ease-in;
+  }
+  .nav__toggler {
+    display: none;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 768px) {
+    .nav__toggler{
+        display: block;
+        cursor: pointer;
+    }
+    .nav__menu {
+        position: fixed;
+        top: 7vh;
+        right: 0;
+        height: 93vh;
+        width: 50vw;
+        background: #383d59;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: 0.5s ease-in;
+      }
+       
+      .nav__active {
+        transform: translateX(0%);
+      }
+
+      .toggle .line1{
+        transform: rotate(-45deg) translate(-8px, 5px);
+      }
+      .toggle .line3{
+        transform: rotate(45deg) translate(-8px, -5px);
+      }
+      .toggle .line2 {
+        opacity: 0;
+      }
+  }

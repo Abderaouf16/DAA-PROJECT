@@ -1,0 +1,17 @@
+.logo-daa{
+width: 150px;
+height: 150px;
+margin: 30px;
+}
+.main{
+    align-items: center;
+    padding-top: 50px;
+    gap: 40px;
+
+}
+.footer-text{
+    font-size: 25px;
+    font-weight: 700;
+    font-family: 'Square Peg', cursive;
+font-family: 'Teko', sans-serif;
+}
