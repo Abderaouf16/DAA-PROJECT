@@ -3,6 +3,7 @@ import Footer from '../components/Footer/Footer'
 import home1 from '../components/CSS/Projects1.css'
 import { FaSearch } from "react-icons/fa"; 
 import ProjectsCard from '../components/ProjectsPage/ProjectsCard'
+import Header from '../components/Header/Header'
 
 
 export default function Projects() {
@@ -12,8 +13,9 @@ export default function Projects() {
   
   return(
   <>
+  <Header/>
 <div className=" flex justify-center ">
-<div className=' flex flex-col bg-white w-11/12 h-screen rounded-3xl  items-center  '>
+<div className=' flex flex-col bg-white w-11/12  rounded-3xl  items-center  '>
         <div className='w-full flex justify-center items-center sm:flex-row flex-col mt-4   '>
          <h2 className='big-title font-bold text-3xl text-black text-left items-center  '> Search and browse projects of your taste </h2>
         </div>
@@ -23,9 +25,29 @@ export default function Projects() {
             <button className='mr-2'> <FaSearch className='   text-xl  '/> </button>
           </form>
         </div>
-        <div className="flex flex-wrap sm:justify-start justify-center gap-8 text-black" >
+        <div className="">
+          <select name="Select year" id="" className='bg-black text-gray-300 p-3 text-sm rounded-lg outline-none sm:mt-0 mt-5'>
+            <option value="">1 CPA</option>
+            <option value="">2 CPA</option>
+            <option value=""> 3 CPA</option>
+          </select>
+        </div>
+        <div className="flex flex-wrap  justify-center gap-8 text-black" >
             {[1,2,3,4,5,6,7,8,9].map((song,i) =>(
-                <h1>iiii</h1>
+                <div className="flex flex-wrap sm:justify-start justify-center gap-8">
+
+                  <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+                    <div className="relative w-full h-56 group">
+                      <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex">
+
+                      </div>
+                      <img src="" alt="" className='w-full h-full rounded-lg' />
+                    </div>
+                    <div className="mt-4 flex flex-col">
+                      <p className='font-semibold text-lg text-white truncate'> bfgfb</p>
+                    </div>
+                  </div>
+                </div>
             ))}
         </div>
          </div>

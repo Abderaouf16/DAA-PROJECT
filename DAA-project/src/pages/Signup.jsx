@@ -2,6 +2,7 @@ import React from 'react'
 import signup from '../components/CSS/Signup.css'
 import  wood from '../assets/wood.jpg'
 import { FcGoogle } from 'react-icons/fc';
+import Header from '../components/Header/Header'
 // import {GoogleAuthProvider , signInWithPopup} from 'firebase/auth'
 // import {auth} from '../utils/firebase'
 
@@ -27,7 +28,7 @@ export default function Signup() {
 
   return (
   <>
-  
+  <Header/>
   <div className="abdou1">
 <div className="mino1 ">
   <div className=" container-left ">

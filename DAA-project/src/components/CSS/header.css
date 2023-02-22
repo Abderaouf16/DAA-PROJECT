@@ -8,7 +8,7 @@ box-sizing: border-box;
 
 .nav {
     height: 8vh;
-    background: #383d59
+    
   }
   .title{
     font-size: 23px;
@@ -46,6 +46,7 @@ box-sizing: border-box;
         flex-direction: column;
         transform: translateX(100%);
         transition: 0.5s ease-in;
+        z-index: 999;
       }
        
       .nav__active {

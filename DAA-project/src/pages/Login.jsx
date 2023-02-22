@@ -2,10 +2,13 @@ import React from 'react'
 import home from '../components/CSS/login.css'
 import  wood from '../assets/wood.jpg'
 import { FcGoogle } from 'react-icons/fc';
+import Header from '../components/Header/Header'
 
 export default function Login() {
   return (
     <>
+    <section className='fatherLogIn'>
+  <Header/>
   
     <div className="abdou1">
   <div className="mino1 ">
@@ -70,6 +73,7 @@ export default function Login() {
     
   </div>
       </div>
+      </section>
     </>
   )
 }

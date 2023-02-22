@@ -14,7 +14,8 @@ export default function
   return (
     <>
        
-       <Header/>
+       <section>
+        
         
   <Routes>
     <Route path='/home' element={<Home/>} />
@@ -23,7 +24,7 @@ export default function
     <Route path='/signup' element={<Signup/>} />
   </Routes>
   
-     
+  </section>
   
    </>
   )

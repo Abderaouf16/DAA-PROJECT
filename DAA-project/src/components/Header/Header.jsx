@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import header from '../CSS/header.css'
 import {NavLink} from 'react-router-dom'
 
+
 const header_links=[
   {
     path:'home',
@@ -47,18 +48,14 @@ export default function Header() {
   return (
 
 
-    <nav className='nav flex items-center justify-around p-10'>
+    <nav className='nav flex items-center justify-around p-10 bg-transparent'>
         <a className= ' title  text-white font-bold ' href=''> Archi World</a>
         <ul className={active}>
-            {
-              header_links.map((item)=>(
-                <li className=''>
-                  <NavLink to={item.path}
-                  className=''
-                   >{item.display}</NavLink>
-                </li>
-              ))
-            }
+          
+        <li><a href="/home">Home</a></li>
+             <li><a href="/projects">Projects</a></li>
+             <li><a href="/login">Login</a></li>
+             <li><a href="/signup">Signup</a></li>
             <div className=""></div>
         </ul>
 
