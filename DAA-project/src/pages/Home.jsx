@@ -20,15 +20,26 @@ export default function Home() {
 
     <section className='father'>
     <Header/>
-      <div className=" bg-white  h-full flex justify-center items-center">
-        <div className=" bg-slate-600 h-3/5 w-3/5 flex  items-center flex-col   mr-96">
-            <div className="flex flex-col items-center mt-44  ">
-            <h1 className=' text-6xl mt-10  font-bold  '></h1>
-             <h4 className=' m-5 font-normal'> DISCOVER THE LARGEST PROJECTS LIBERARY ON THE INTERNET </h4>
+      <div className="  h-full w-full flex justify-center items-center ">
+        <div className="  h-3/5 w-3/5 flex-1 flex sm:flex-row   flex-col  justify-center items-center ">
+            <div className=" flex  flex-col m-4  text-5xl md:text-7xl  font-bold  ">
+            <h1 className='mt-4   '>Harmony </h1>
+            <h1 className='mt-4  md:ml-20 ml-7 '> Elegance  </h1>
+            <h1 className='mt-4  md:ml-32 ml-12 '>Simplicity</h1>
+             
+        </div>
+        
+        <div className=" flex-1 justify-end items-center flex ">
+           <div className="justify-center items-center flex">
+            <button type='button' className='flex   bg-slate-500 w-2/4 py-3 m-3 justify-center rounded-lg px-24 '>
+            <span className=' text-sm text-white '> EXPLORE MORE</span>
+           </button>
+           </div>
         </div>
         </div>
       </div>
     </section>
+  
 
 </>
 

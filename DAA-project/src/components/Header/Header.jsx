@@ -49,7 +49,7 @@ export default function Header() {
 
 
     <nav className='nav flex items-center justify-around p-10 bg-transparent'>
-        <a className= ' title  text-white font-bold ' href=''> Archi World</a>
+        <a className= ' title  text-white font-bold ' href='/home'> Archi World</a>
         <ul className={active}>
           
         <li><a href="/home">Home</a></li>

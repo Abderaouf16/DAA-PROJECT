@@ -10,12 +10,12 @@ export default function Login() {
     <section className='fatherLogIn'>
   <Header/>
   
-    <div className="abdou1">
-  <div className="mino1 ">
-    <div className=" container-left2 ">
+    <div className="abdou1  bg-red-800 flex">
+  <div className="mino1  ">
+    <div className=" container-left2  ">
     </div>
-    <div className="container-right bg-white">
-    <div className=" container ">
+    <div className="container-right bg-white ">
+    <div className=" container  ">
       <h2 className='_h2'> Log In</h2>
       <div className="big container ">
         <div className="  my-7">

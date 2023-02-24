@@ -1,17 +1,25 @@
-.container-left2{
-    background-color: black;
+@media (min-width:821px) {
+   
+  .container-left2{
+    flex-basis: 50%;
+   
     background-image: url(../../assets/building2.jpg);
     background-size: cover;
-    border-top-left-radius:  30px;
-    border-bottom-left-radius:  30px;
-}
-.container-left2 , .container-right{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 16px;
+    border-bottom-left-radius: 16px;
+  }
+  .container-right2{
     flex-basis: 50%;
-    text-align: center;
-}
-.fatherLogIn{
-    
-     
-  height: 100vh;
-    background-size: cover;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+ .father_container{
+  width: 65%;
+  height: 95%;
+ }
+ .big container{
+  padding: 20px;
+ }
 }
