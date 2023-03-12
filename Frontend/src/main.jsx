@@ -4,18 +4,19 @@ import App from './App'
 import './index.css'
 import dotenv from 'dotenv'
 
-// require("dotenv").config();
+import {AuthContextProvider} from './context/AuthContext'
 
 
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   
-
+    <AuthContextProvider>
     <BrowserRouter>
     
     <App />
     
     </BrowserRouter>
+    </AuthContextProvider> 
   
 )
