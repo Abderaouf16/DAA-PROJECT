@@ -82,3 +82,20 @@
 input[type="search"]::-webkit-search-cancel-button {
     display: none;
   }
+
+  .popup {
+    position: absolute;
+    
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+  }
+       
+
+
+
+  /*    dccdcdecdecedcec*/ 
+
+
+
+  

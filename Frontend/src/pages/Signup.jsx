@@ -33,26 +33,28 @@ const handleSignup= async (e)=>{
       <Header/>
       <div className="body1">
     <form action="" className='login-from flex flex-col items-center rounded-lg  ' onSubmit={handleSignup}>
-      <h1 className='font-serif    text-xl'> Signup  </h1>
+      <h1 className='font-serif    text-2xl'> Signup  </h1>
       <div className="form-input-material flex flex-col">
         <label htmlFor='username'  className='p-2'>Username</label>
         <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" name="username" id="username"
-         placeholder='' className='form-control-material' required className=' rounded-sm' />
+         placeholder='' className='form-control-material  rounded-sm p-1'  required />
       </div>
       
       <div className="form-input-material flex flex-col">
         <label htmlFor='email ' className='p-2'>Email</label>
         <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email"
-         placeholder='' className='form-control-material  rounded-sm ' required />
+         placeholder='' className='form-control-material  rounded-sm p-1' required />
       </div>
 
       <div className="form-input-material flex flex-col">
         <label htmlFor='password ' className='p-2'>Password</label>
         <input value={password} onChange={e => setPassword(e.target.value)}  type="password" name="password" id="password"
-         placeholder='' className='form-control-material  rounded-sm ' required />
+         placeholder='' className='form-control-material  rounded-sm p-1' required />
       </div>
          <button disabled={isLoading} type='submit' className='btn bg-white text-black  rounded-md '> Signup</button>
-         {error && ( <div><p>{error}</p></div> )}
+         {error && (
+              <p className="text-red-500 font-bold text-sm">{error.msg}</p>
+            )}
     </form>
     </div>
     </section>

@@ -1,4 +1,4 @@
-import {createContext, useReducer} from  'react'
+import {createContext, useReducer,useEffect} from  'react'
 
 
 export const AuthContext= createContext()
@@ -21,6 +21,17 @@ export const AuthContextProvider= ({children})=>{
  const [state,dispatch ]= useReducer(authReducer, {
     user: null
  })
+   // when we reaload we will check if there is a state 
+ useEffect(()=>{
+     const user = JSON.parse(localStorage.getItem('user'))
+
+     // dispatch login action to update the global state
+     // to match the user in the local storage
+      if(user){
+          dispatch({type: 'LOGIN', payload: user})
+      }
+ }, [])
+ 
  console.log(state)
 
  return (

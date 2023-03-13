@@ -1,7 +1,7 @@
 import express from "express";
 import{loginUser,register} from "../controllers/userSection.js"
 import {verify} from '../middleWares/verifyToken.js'
-
+import{createProject} from "../controllers/projectsSection.js"
 const router = express.Router();
 
 
@@ -11,5 +11,8 @@ router.post("/login", loginUser);
 
 // Signup route
 router.post("/signup", register);
+
+// create a project route
+router.post("/projects",verify, createProject);
 
 export default router
