@@ -158,7 +158,7 @@
   footer{
     position: relative;
     background-color: hsl(256, 26%, 20%);
-    height: 13vh;
+    
   }
   .footer-icons svg{
     max-width: 3rem;

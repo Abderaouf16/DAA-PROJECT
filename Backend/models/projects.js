@@ -4,24 +4,19 @@ const Schema = mongoose.Schema;
 
 const Projectchema = new Schema(
   {
-    title: {
+    ProjectName: {
       type: String,
       required: true,
     },
     description: {
       type: String,
-      required: false,
-    },
-    scholarYear: {
-      type: String,
       required: true,
     },
     postedBy: {
-      type: Schema.ObjectId,
+      type: String,
       required: false,
     },
-    
-  
+   
    
   },
   { timestamps: true }

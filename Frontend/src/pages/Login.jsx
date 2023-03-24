@@ -28,12 +28,12 @@ const {login, isLoading, error} = useLogin()
 
   return (
     <>
-    <section >
+    <section className='section_auth' >
       <Header/>
-      <div className="body1">
-    <form action="" className='login-from flex flex-col items-center rounded-lg  '  onSubmit={handleLoginSubmit}>
+      <div className="body1 ">
+    <form action="" className='login-from flex flex-col items-center rounded-lg   '  onSubmit={handleLoginSubmit}>
       <h1 className='font-serif   text-2xl'> Login  </h1>
-      <div className="form-input-material flex flex-col">
+      <div className="form-input-material flex flex-col ">
         <label value={email} htmlFor='email'  className=' p-2 '>Your Email</label>
         <input onChange={(e) => setEmail(e.target.value)} type="email" name="email" id="email"
          placeholder='' className='form-control-material p-1 rounded-sm' required  />
@@ -46,7 +46,7 @@ const {login, isLoading, error} = useLogin()
       </div>
          <button disabled={isLoading}  type='submit' className='btn bg-white text-black  rounded-md ' > Login</button>
          {error && (
-              <p className="text-red-500 font-bold text-sm">{error.msg}</p>
+              <p className="text-red-500 font-bold p-3 text-sm">{error.msg}</p>
             )}
     </form>
     </div>

@@ -6,6 +6,10 @@
     padding: 7px;
     
 }
+.section_auth{
+  background-color: white;
+}
+
 ._h2{
     font-family: 'Devious Sans', Arial, Helvetica, sans-serif;
        font-size: 28px;

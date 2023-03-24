@@ -12,7 +12,6 @@ router.post("/login", loginUser);
 // Signup route
 router.post("/signup", register);
 
-// create a project route
-router.post("/projects",verify, createProject);
+
 
 export default router

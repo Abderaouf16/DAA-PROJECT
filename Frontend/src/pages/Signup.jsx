@@ -29,10 +29,10 @@ const handleSignup= async (e)=>{
 
   return (
     <>
-    <section >
+    <section className='section_auth' >
       <Header/>
       <div className="body1">
-    <form action="" className='login-from flex flex-col items-center rounded-lg  ' onSubmit={handleSignup}>
+    <form action="" className='login-from flex flex-col items-center rounded-lg   ' onSubmit={handleSignup}>
       <h1 className='font-serif    text-2xl'> Signup  </h1>
       <div className="form-input-material flex flex-col">
         <label htmlFor='username'  className='p-2'>Username</label>
@@ -53,7 +53,7 @@ const handleSignup= async (e)=>{
       </div>
          <button disabled={isLoading} type='submit' className='btn bg-white text-black  rounded-md '> Signup</button>
          {error && (
-              <p className="text-red-500 font-bold text-sm">{error.msg}</p>
+              <p className="text-red-500 font-bold p-3 text-sm">{error.msg}</p>
             )}
     </form>
     </div>
