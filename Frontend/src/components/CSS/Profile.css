@@ -1,0 +1,10 @@
+.big-father{
+background-color: black;
+} 
+@media (max-width:700px) {
+    .big-father{
+        flex-direction: column;
+        justify-content: center;
+        } 
+        
+}

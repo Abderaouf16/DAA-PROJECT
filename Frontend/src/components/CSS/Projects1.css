@@ -128,6 +128,15 @@ input[type="search"]::-webkit-search-cancel-button {
     border-radius: 15px;
 
 }
+.popup-inerd{
+    position: relative;
+    padding: 32px;
+   width: 70%;
+
+   
+    background-color:  hsl(256, 26%, 20%);
+    border-radius: 15px;
+}
 form h2{
     font-family: "DM Serif Display", serif;
 }

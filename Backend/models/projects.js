@@ -14,7 +14,7 @@ const Projectchema = new Schema(
     },
     postedBy: {
       type: String,
-      required: false,
+      required: true,
     },
    
    

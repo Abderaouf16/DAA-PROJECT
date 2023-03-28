@@ -61,11 +61,12 @@ toggleDropdown();
 <>
    <header>
 
-    <nav className='nav flex items-center justify-around p-10  bg-white'>
-        <a className= 'text-black title   pr-2  font-bold ' href='/home'> Archi World</a>
+    <nav className='nav flex items-center justify-around py-10 bg-white w-full'>
+        <a className= 'text-black title   pr-2  font-bold  pl-5  ' href='/home'> Archi World</a>
             <ul className={open ? 'nav_items active ': 'nav_items'} >
             <li className='text-black'><a href="/home">Home</a></li>
             <li className='text-black'><a href="/projects">Projects</a></li>
+            <li className='text-black'><a href="/profile">profile</a></li>
                 {!user && (
                  <>
                    <li className='text-black'><a href="/login">Login</a></li>
@@ -87,7 +88,7 @@ toggleDropdown();
           {isOpen && ( 
               <div className=" dropeDown flex flex-col border-black border-2">
                 <ul className=' cursor-pointer'>
-                  <li className='my-1 '>profile</li>
+                <li className='my-1'><a href="/profile">profile</a></li>
                   {user && ( 
                     <button onClick={handleLogout}  className='p-0'>logout</button>
                   )}
@@ -109,7 +110,7 @@ toggleDropdown();
     </div>
         </>
       )}
-      <svg onClick={handdelSideBar} className='hamborger ' xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" fillRule="evenodd"><path fill="#FFF" stroke="#2C2830" strokeWidth="1.5" d="M.75.75h30.5v30.5H.75z"/><g fill="#2C2830"><path d="M8 10h16v1.5H8zM8 15h16v1.5H8zM8 20h16v1.5H8z"/></g></g></svg>
+      <svg onClick={handdelSideBar} className='hamborger z-50 ' xmlns="http://www.w3.org/2000/svg" width="32" height="32"><g fill="none" fillRule="evenodd"><path fill="#FFF" stroke="#2C2830" strokeWidth="1.5" d="M.75.75h30.5v30.5H.75z"/><g fill="#2C2830"><path d="M8 10h16v1.5H8zM8 15h16v1.5H8zM8 20h16v1.5H8z"/></g></g></svg>
     </nav> 
    </header>
  </>
