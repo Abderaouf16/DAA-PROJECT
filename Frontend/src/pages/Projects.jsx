@@ -24,6 +24,9 @@ export default function Projects() {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  // adding a project
 
   const handleAddProject = async (event) => {
     event.preventDefault();
@@ -65,6 +68,8 @@ export default function Projects() {
     }
   };
 
+  // Fetching all Project
+
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3001/api/projects")
@@ -89,9 +94,19 @@ export default function Projects() {
 
   const togglePopupDetails = (projectId) => {
     setShowPopupDetails(!showPopupDetails);
-    setSelectedProjectId(projectId)
+    setSelectedProjectId(projectId);
     // console.log(selectedProjectId)
   };
+
+  // For search bar
+  const filteredProjects = projects.filter((project) => {
+    // filter method will create a new erray with elements passed
+    const name = project.ProjectName.toLowerCase(); // lowercase method will ensure that the search is case-insensitive.
+    const term = searchTerm.toLowerCase();
+    return name.includes(term); // will check if the searched letters matches with an project name
+    // if there is a match the filter methode will include the project that matches in the filterdProject array
+    // if not it will be cancelled and print all projects founded
+  });
 
   return (
     <>
@@ -105,8 +120,7 @@ export default function Projects() {
           <div className=" flex flex-col  w-full items-center  ">
             <div className="w-full flex justify-center items-center  mt-4   py-6  ">
               <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
-                {" "}
-                Search and browse projects of your taste{" "}
+                Search and browse projects of your taste
               </h2>
             </div>
             <div className=""></div>
@@ -116,9 +130,11 @@ export default function Projects() {
                   type="search"
                   placeholder="search.."
                   className="placeholder-black text-black bg-transparent w-full outline-none text-xl  "
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <button className="mr-2">
-                  <FaSearch className=" text-black  text-xl  " />{" "}
+                  <FaSearch className=" text-black  text-xl  " />
                 </button>
               </form>
             </div>
@@ -146,17 +162,19 @@ export default function Projects() {
             )}
 
             <div className="flex flex-wrap  justify-center gap-8 text-black  ">
-              {projects?.map((project) => (
+              {filteredProjects?.map((project) => (
                 <div
                   key={project._id}
                   className="flex flex-wrap sm:justify-start justify-center gap-8"
                 >
                   <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
                     <div className="">
-                      <h1 className='text-white '>{project.posterName} </h1>
+                      <h1 className="text-white ">{project.posterName} </h1>
                     </div>
                     <div className="">
-                    <h1 className='text-white text-[13px] py-2'>{project.createdAt.slice(0, 10)}</h1>
+                      <h1 className="text-white text-[13px] py-2">
+                        {project.createdAt.slice(0, 10)}
+                      </h1>
                     </div>
                     <div className="relative w-full h-56 group">
                       <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
@@ -174,7 +192,10 @@ export default function Projects() {
                     </div>
                     <div className="flex justify-center items-center m-2">
                       <div className="  bg-white rounded-md w-6/12 flex justify-center items-center ">
-                        <button onClick={() => togglePopupDetails(project._id)} className="p-2 ">
+                        <button
+                          onClick={() => togglePopupDetails(project._id)}
+                          className="p-2 "
+                        >
                           See more
                         </button>
                       </div>

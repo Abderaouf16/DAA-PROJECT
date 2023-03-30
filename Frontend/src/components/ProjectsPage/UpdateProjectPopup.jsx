@@ -6,45 +6,39 @@ import { FaSearch } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function UpdateProjectPopup(props) {
-  const {
-    togglePopup,
-    handleEditProduct,
-    selectedProjectId
-  } = props;
-
+  const { togglePopup, handleEditProduct, selectedProjectId } = props;
 
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
 
   const EditProduct = async (event) => {
     event.preventDefault();
-  
-    console.log(selectedProjectId);
-  
+
+    // console.log(selectedProjectId);
+
     const data = {
       description: description,
-      ProjectName: projectName
+      ProjectName: projectName,
     };
-  
+
     fetch(`http://localhost:3001/api/projects/${selectedProjectId}`, {
       method: "PATCH",
       mode: "cors",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        window.location.reload()
+        // console.log(data);
+        // Refresh the page after successfully adding the project
+        window.location.reload();
       })
       .catch((err) => {
         console.error(err);
       });
   };
-  
-  
 
   return (
     <div className="popup  ">
@@ -88,7 +82,6 @@ export default function UpdateProjectPopup(props) {
                 name="fileToUpload"
                 id="fileToUpload"
                 class=" p-2 rounded-md  ml-4 text-sm w-10/12 "
-               
               />
             </div>
             <div className=" flex  justify-evenly mt-6">
@@ -96,7 +89,7 @@ export default function UpdateProjectPopup(props) {
                 <button onClick={togglePopup}> cancel</button>
               </div>
               <div className="    border-white   border-[1px] ">
-                <button onClick={EditProduct}  type="submit">
+                <button onClick={EditProduct} type="submit">
                   Update
                 </button>
                 {/* {error && (
