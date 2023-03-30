@@ -118,12 +118,11 @@ export default function Projects() {
           </div>
         ) : (
           <div className=" flex flex-col  w-full items-center  ">
-            <div className="w-full flex justify-center items-center  mt-4   py-6  ">
+            <div className="w-full flex justify-center items-center  mt-4 pt-2  ">
               <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
                 Search and browse projects of your taste
               </h2>
             </div>
-            <div className=""></div>
             <div className=" inputContainer w-5/12 h-[48px] rounded-3xl bg-white m-5 flex  justify-end my-4">
               <form action="" className="flex  w-11/12  ">
                 <input
@@ -161,7 +160,7 @@ export default function Projects() {
               />
             )}
 
-            <div className="flex flex-wrap  justify-center gap-8 text-black  ">
+            <div className="flex flex-wrap  justify-center gap-8 text-black my-8 ">
               {filteredProjects?.map((project) => (
                 <div
                   key={project._id}

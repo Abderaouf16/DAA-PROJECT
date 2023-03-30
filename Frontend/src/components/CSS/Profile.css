@@ -1,6 +1,8 @@
 .big-father{
-background-color: black;
+
+    background-color: #4b4168;
 } 
+
 @media (max-width:700px) {
     .big-father{
         flex-direction: column;

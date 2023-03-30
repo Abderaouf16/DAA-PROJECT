@@ -13,6 +13,7 @@ import home1 from "../components/CSS/Projects1.css";
 import UserInfo from "../components/ProfilePage/UserInfo";
 import UpdateProjectPopup from "../components/ProjectsPage/UpdateProjectPopup";
 
+
 export default function Profile() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -43,6 +44,7 @@ export default function Profile() {
           setProjects(data);
         })
         .catch((e) => console.log(e));
+      setLoading(false);
     }
   }, [user]);
 
@@ -94,11 +96,11 @@ export default function Profile() {
           </div>
         ) : (
           <div className=" ">
+            <UserInfo/>
             <div className="  h-3/5 w-9/12 m-auto py-10">
               <div className=" flex justify-center ">
                 <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
-                  {" "}
-                  Projects Added{" "}
+                  Projects Added
                 </h2>
               </div>
               <div className="">
@@ -148,7 +150,7 @@ export default function Profile() {
                           <div className="   rounded-md w-4/12 flex  justify-end items-center m-1 ">
                             <FontAwesomeIcon
                               onClick={() => togglePopupUpdate(project._id)}
-                              className="p-1 mr-2"
+                              className="p-1 mr-2 text-white"
                               icon={faPenToSquare}
                               size="xl"
                             />
@@ -157,6 +159,7 @@ export default function Profile() {
                               icon={faTrash}
                               size="xl"
                               onClick={() => handleDelete(project._id)}
+                              className='text-white'
                             />
                           </div>
                         </div>

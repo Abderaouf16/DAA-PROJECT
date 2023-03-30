@@ -11,6 +11,7 @@ import hamburger from '../../images/icon-hamburger.svg';
 
 export default function Header() {
 
+
   // FOR THE SIDEBAR TOGGLE
   const [open, setOpen] = useState(false)
   const handdelSideBar=(e)=>{
@@ -25,11 +26,14 @@ export default function Header() {
   const {logout} = useLogout()
   const handleClick =()=>{
     logout()
+    
 }
                           // FOR CLOSING THE DROPDOWN WHEN WE LOGOUT
 const handleLogout = () => {
 handleClick();
 toggleDropdown();
+
+
 }
  
                          //FOR THE DROPDOWN
@@ -90,7 +94,7 @@ toggleDropdown();
                 <ul className=' cursor-pointer'>
                 <li className='my-1'><a href="/profile">profile</a></li>
                   {user && ( 
-                    <button onClick={handleLogout}  className='p-0'>logout</button>
+                    <button onClick={handleLogout}  className='p-0'><a href="/home">logout</a></button>
                   )}
                 </ul>
               </div>
