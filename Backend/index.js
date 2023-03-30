@@ -12,6 +12,7 @@ import userRoutes from './routes/userRoutes.js'
 import projectRoutes from './routes/projectRoutes.js'
 
 
+
 /* CONFIGURATIONS */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +36,13 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+  // allow cross-origin requests from the frontend
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'http://localhost:5173');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
   app.listen(process.env.PORT, () => {
     console.log(`listening for request on port ${process.env.PORT}`);

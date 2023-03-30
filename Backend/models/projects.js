@@ -16,6 +16,10 @@ const Projectchema = new Schema(
       type: String,
       required: true,
     },
+    posterName: {
+      type: String,
+      required: true,
+    },
    
    
   },

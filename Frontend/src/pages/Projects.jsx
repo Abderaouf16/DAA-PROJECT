@@ -1,72 +1,70 @@
-import React, { useState,useEffect } from 'react';
-import home1 from '../components/CSS/Projects1.css'
-import { FaSearch } from "react-icons/fa";  
-import Header from '../components/Header/Header'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import React, { useState, useEffect } from "react";
+import home1 from "../components/CSS/Projects1.css";
+import { FaSearch } from "react-icons/fa";
+import Header from "../components/Header/Header";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useAuthContext } from "../hooks/useAuthContext";
-import axios from 'axios'
+import axios from "axios";
 import { css } from "@emotion/react";
 import { BeatLoader } from "react-spinners";
-import AddingProjectPopup from '../components/ProjectsPage/addingProjectPopup'
-import ProjectForm from '../components/ProjectsPage/ProjectForm'
-import ProjectDetails from '../components/ProjectsPage/projectDetails'
-
+import AddingProjectPopup from "../components/ProjectsPage/addingProjectPopup";
+import ProjectForm from "../components/ProjectsPage/ProjectForm";
+import ProjectDetails from "../components/ProjectsPage/projectDetails";
 
 export default function Projects() {
-
-  const {user}= useAuthContext()
-  
-  const displayFooter= true
-
+  const { user } = useAuthContext();
+  const displayFooter = true;
   const [loading, setLoading] = useState(true);
-  
   const [showPopup, setShowPopup] = useState(false);
-
-  const [buttonPopup, setButtonPopup]= useState(false)
-
+  const [showPopupDetails, setShowPopupDetails] = useState(false);
+  const [buttonPopup, setButtonPopup] = useState(false);
   const [projects, setProjects] = useState([]);
- 
-  
-  const [projectName, setProjectName] = useState('');
+  const [projectName, setProjectName] = useState("");
   const [image, setImage] = useState(null);
-  const [description, setDescription] = useState('');
-
+  const [description, setDescription] = useState("");
+  const [selectedProjectId, setSelectedProjectId] = useState(null);
 
   const handleAddProject = async (event) => {
     event.preventDefault();
-  
-    if (!description || !projectName ) {
-      alert('Please fill all the fields');
+
+    if (!description || !projectName) {
+      alert("Please fill all the fields");
       return;
     }
-  
+
     const formData = new FormData();
-    formData.append('description', description);
-    formData.append('ProjectName', projectName);
-    formData.append('postedBy', user._id);
-  
+    formData.append("description", description);
+    formData.append("ProjectName", projectName);
+    formData.append("postedBy", user._id);
+    formData.append("posterName", user.username);
+
     try {
-      const response = await axios.post('http://localhost:3001/api/projects', formData, {
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${user.token}`
+      const response = await axios.post(
+        "http://localhost:3001/api/projects",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${user.token}`,
+          },
         }
-      });
+      );
       if (response.status < 200 || response.status >= 300) {
-        throw new Error('adding project: server responded with status ' + response.status);
+        throw new Error(
+          "adding project: server responded with status " + response.status
+        );
       }
-    
-      setShowPopup(false)
+
+      setShowPopup(false);
       // Refresh the page after successfully adding the project
-      window.location.reload()
+      window.location.reload();
     } catch (error) {
       console.error(error);
-      alert('error out side' + error.message);
+      alert("error out side" + error.message);
     }
   };
 
-   
   useEffect(() => {
     setLoading(true);
     fetch("http://localhost:3001/api/projects")
@@ -77,8 +75,6 @@ export default function Projects() {
           );
         }
         return response.json();
-        
-        
       })
       .then((data) => {
         setProjects(data);
@@ -87,113 +83,119 @@ export default function Projects() {
       .catch((e) => console.log(e));
   }, []);
 
-  // async function handleLoginSubmit(e) {
-  //   e.preventDefault();
-
-  //   await Projects(projectName, description)
-  // }
-
   const togglePopup = () => {
     setShowPopup(!showPopup);
   };
 
-  
-  return(
-  <>
-  <Header/>
-<div className=" father flex justify-center ">
+  const togglePopupDetails = (projectId) => {
+    setShowPopupDetails(!showPopupDetails);
+    setSelectedProjectId(projectId)
+    // console.log(selectedProjectId)
+  };
 
-{loading ? (
-    <div className="flex items-center justify-center h-screen">
-      <BeatLoader color={"#ffffff"} loading={loading} size={30} />
-    </div>
-  ) : (
-    
-<div className=' flex flex-col  w-full items-center  '>
-        <div className='w-full flex justify-center items-center  mt-4   py-6  '>
-         <h2 className='big-title font-bold text-3xl text-white text-left items-center  '> Search and browse projects of your taste </h2>
-        </div>
-        <div className=""></div>
-        <div className=" inputContainer w-5/12 h-[48px] rounded-3xl bg-white m-5 flex  justify-end my-4">
-          <form action="" className='flex  w-11/12  '>
-            <input  type="search" placeholder='search..' className='placeholder-black text-black bg-transparent w-full outline-none text-xl  ' />
-            <button className='mr-2'> <FaSearch className=' text-black  text-xl  '/> </button>
-          </form>
-        </div>
-          
-      {user && (
+  return (
+    <>
+      <Header />
+      <div className=" father flex justify-center ">
+        {loading ? (
+          <div className="flex items-center justify-center h-screen">
+            <BeatLoader color={"#ffffff"} loading={loading} size={30} />
+          </div>
+        ) : (
+          <div className=" flex flex-col  w-full items-center  ">
+            <div className="w-full flex justify-center items-center  mt-4   py-6  ">
+              <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
+                {" "}
+                Search and browse projects of your taste{" "}
+              </h2>
+            </div>
+            <div className=""></div>
+            <div className=" inputContainer w-5/12 h-[48px] rounded-3xl bg-white m-5 flex  justify-end my-4">
+              <form action="" className="flex  w-11/12  ">
+                <input
+                  type="search"
+                  placeholder="search.."
+                  className="placeholder-black text-black bg-transparent w-full outline-none text-xl  "
+                />
+                <button className="mr-2">
+                  <FaSearch className=" text-black  text-xl  " />{" "}
+                </button>
+              </form>
+            </div>
 
-        <div className="">
-          <button className=' bg-white text-black  my-4 rounded-lg px-12' onClick={togglePopup}>Add Project</button>         
-        </div>   
-      )}
+            {user && (
+              <div className="">
+                <button
+                  className=" bg-white text-black  my-4 rounded-lg px-12"
+                  onClick={togglePopup}
+                >
+                  Add Project
+                </button>
+              </div>
+            )}
 
-       {showPopup && (
+            {showPopup && (
+              <AddingProjectPopup
+                togglePopup={togglePopup}
+                handleAddProject={handleAddProject}
+                projectName={projectName}
+                setProjectName={setProjectName}
+                description={description}
+                setDescription={setDescription}
+              />
+            )}
 
-    <AddingProjectPopup
-    togglePopup={togglePopup}
-    handleAddProject={handleAddProject}
-    projectName={projectName}
-    setProjectName={setProjectName}
-    description={description}
-    setDescription={setDescription}
-  />
-       )}    
-
-
-
-
-
-        <div className="flex flex-wrap  justify-center gap-8 text-black  " >
-        {projects?.map((project) => (
-  <div  key={project._id}  className="flex flex-wrap sm:justify-start justify-center gap-8">
-    <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
-      <div className="relative w-full h-56 group">
-        <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
-        <img src="" alt="" className='w-full h-full rounded-lg' />
+            <div className="flex flex-wrap  justify-center gap-8 text-black  ">
+              {projects?.map((project) => (
+                <div
+                  key={project._id}
+                  className="flex flex-wrap sm:justify-start justify-center gap-8"
+                >
+                  <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+                    <div className="">
+                      <h1 className='text-white '>{project.posterName} </h1>
+                    </div>
+                    <div className="">
+                    <h1 className='text-white text-[13px] py-2'>{project.createdAt.slice(0, 10)}</h1>
+                    </div>
+                    <div className="relative w-full h-56 group">
+                      <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
+                      <img src="" alt="" className="w-full h-full rounded-lg" />
+                    </div>
+                    <div className=" flex flex-col ">
+                      <p className=" p-2 font-semibold text-lg text-white truncate ">
+                        {project.ProjectName}
+                      </p>
+                    </div>
+                    <div className=" flex flex-col ">
+                      <p className=" p-2 font-semibold text-lg text-white truncate">
+                        {project.description}
+                      </p>
+                    </div>
+                    <div className="flex justify-center items-center m-2">
+                      <div className="  bg-white rounded-md w-6/12 flex justify-center items-center ">
+                        <button onClick={() => togglePopupDetails(project._id)} className="p-2 ">
+                          See more
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            {showPopupDetails && (
+              <ProjectDetails
+                togglePopup={togglePopupDetails}
+                projectName={projectName}
+                setProjectName={setProjectName}
+                description={description}
+                setDescription={setDescription}
+                selectedProjectId={selectedProjectId}
+              />
+            )}
+          </div>
+        )}
       </div>
-      <div className=" flex flex-col ">
-        <p className=' p-2 font-semibold text-lg text-white truncate '>{project.ProjectName}</p>
-      </div>
-      <div className=" flex flex-col ">
-        <p className=' p-2 font-semibold text-lg text-white truncate'>{project.description}</p>
-      </div>
-      <div className="flex justify-center items-center m-2">
-      <div className="  bg-white rounded-md w-6/12 flex justify-center items-center ">
-        <button onClick={togglePopup} className='p-2 '>See more</button>
-      </div>
-      {/* {showPopup && (
-         <ProjectDetails
-         togglePopup={togglePopup}
-         handleAddProject={handleAddProject}
-         projectName={projectName}
-         setProjectName={setProjectName}
-         description={description}
-         setDescription={setDescription}
-       />
-      )} */}
-
-      </div>
-    </div>
-  </div>
-
-
-))}
-
-
-
-
-
-            
-          
-        </div>
-         </div>
-  )}
-
-
-    </div>
-    
-    
-  </>
-  )
+    </>
+  );
 }
