@@ -9,7 +9,6 @@ import axios from "axios";
 import { css } from "@emotion/react";
 import { BeatLoader } from "react-spinners";
 import AddingProjectPopup from "../components/ProjectsPage/addingProjectPopup";
-import ProjectForm from "../components/ProjectsPage/ProjectForm";
 import ProjectDetails from "../components/ProjectsPage/projectDetails";
 
 export default function Projects() {
@@ -25,7 +24,6 @@ export default function Projects() {
   const [description, setDescription] = useState("");
   const [selectedProjectId, setSelectedProjectId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-
   // adding a project
 
   const handleAddProject = async (event) => {
@@ -41,6 +39,7 @@ export default function Projects() {
     formData.append("ProjectName", projectName);
     formData.append("postedBy", user._id);
     formData.append("posterName", user.username);
+    formData.append("image", image);
 
     try {
       const response = await axios.post(
@@ -48,8 +47,8 @@ export default function Projects() {
         formData,
         {
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${user.token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -157,6 +156,8 @@ export default function Projects() {
                 setProjectName={setProjectName}
                 description={description}
                 setDescription={setDescription}
+                setImage={setImage}
+                image={image}
               />
             )}
 
@@ -177,7 +178,13 @@ export default function Projects() {
                     </div>
                     <div className="relative w-full h-56 group">
                       <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
-                      <img src="" alt="" className="w-full h-full rounded-lg" />
+                      <img
+                        src={`http://localhost:3001/api${project.imageURL}`}
+                        id="file"
+                        name="file"
+                        alt=""
+                        className="w-full h-full rounded-lg"
+                      />
                     </div>
                     <div className=" flex flex-col ">
                       <p className=" p-2 font-semibold text-lg text-white truncate ">

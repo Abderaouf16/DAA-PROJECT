@@ -20,7 +20,11 @@ const Projectchema = new Schema(
       type: String,
       required: true,
     },
-   
+    imageURL: {
+      type: String,
+      required: false,
+      unique: true,
+    },
    
   },
   { timestamps: true }

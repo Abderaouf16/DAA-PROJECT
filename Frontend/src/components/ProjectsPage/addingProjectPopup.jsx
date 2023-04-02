@@ -13,6 +13,8 @@ export default function AddingProjectPopup(props) {
     setProjectName,
     description,
     setDescription,
+    setImage,
+    image,
   } = props;
 
   return (
@@ -50,14 +52,15 @@ export default function AddingProjectPopup(props) {
             <h2 className="text text-lg p-3">Upload Photos</h2>
             <div className="">
               <input
+                type="file"
                 onChange={(e) => {
                   setImage(e.target.files[0]);
                 }}
-                type="file"
-                name="fileToUpload"
-                id="fileToUpload"
+                placeholder="product image"
                 className=" p-2 rounded-md  ml-4 text-sm w-10/12 "
                 required
+                id="file"
+                name="file"
               />
             </div>
             <div className=" flex  justify-evenly mt-6">

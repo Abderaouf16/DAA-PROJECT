@@ -13,7 +13,6 @@ import home1 from "../components/CSS/Projects1.css";
 import UserInfo from "../components/ProfilePage/UserInfo";
 import UpdateProjectPopup from "../components/ProjectsPage/UpdateProjectPopup";
 
-
 export default function Profile() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -23,6 +22,7 @@ export default function Profile() {
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState("");
   const [selectedProjectId, setSelectedProjectId] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const { user } = useAuthContext();
 
@@ -86,6 +86,10 @@ export default function Profile() {
     setSelectedProjectId(projectId);
   };
 
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <>
       <Header />
@@ -96,7 +100,7 @@ export default function Profile() {
           </div>
         ) : (
           <div className=" ">
-            <UserInfo/>
+            <UserInfo />
             <div className="  h-3/5 w-9/12 m-auto py-10">
               <div className=" flex justify-center ">
                 <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
@@ -122,9 +126,17 @@ export default function Profile() {
                         <div className="relative w-full h-56 group">
                           <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
                           <img
-                            src=""
+                            src={`http://localhost:3001/api${project?.imageURL}`}
+                            id="file"
+                            name="file"
                             alt=""
                             className="w-full h-full rounded-lg"
+                            onClick={() => {
+                              setSelectedImage(
+                                `http://localhost:3001/api${projectDetails?.imageURL}`
+                              );
+                              toggleModal();
+                            }}
                           />
                         </div>
                         <div className=" flex flex-col ">
@@ -159,7 +171,7 @@ export default function Profile() {
                               icon={faTrash}
                               size="xl"
                               onClick={() => handleDelete(project._id)}
-                              className='text-white'
+                              className="text-white"
                             />
                           </div>
                         </div>

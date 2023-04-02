@@ -144,7 +144,7 @@ input[type="search"]::-webkit-search-cancel-button {
     position: relative;
     padding: 32px;
    width: 70%;
-
+    
    
     background-color:  hsl(256, 26%, 20%);
     border-radius: 15px;

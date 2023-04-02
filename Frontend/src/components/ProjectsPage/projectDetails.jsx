@@ -5,6 +5,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FaSearch } from "react-icons/fa";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState, useEffect } from "react";
+import ImageModal from "../ImageModal/ImageModal";
 
 export default function ProjectDetails(props) {
   const {
@@ -16,6 +17,8 @@ export default function ProjectDetails(props) {
     selectedProjectId,
   } = props;
   const [projectDetails, setProjectDetails] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
     const fetchProjectDetails = async () => {
@@ -40,6 +43,10 @@ export default function ProjectDetails(props) {
     }
   }, [selectedProjectId]);
 
+  const toggleModal = () => {
+    setModalOpen(!modalOpen);
+  };
+
   return (
     <div className="popup ">
       <div className="popup-inerd flex flex-col">
@@ -50,12 +57,12 @@ export default function ProjectDetails(props) {
             onClick={togglePopup}
           />
         </div>
-           <div className="">
-            <h1>Posted By {projectDetails?.posterName} </h1>
-           </div>
-           <div className=" my-3">
-            <h1>Posted At  {projectDetails?.createdAt.slice(0, 10)} </h1>
-           </div>
+        <div className="">
+          <h1>Posted By {projectDetails?.posterName} </h1>
+        </div>
+        <div className=" my-3">
+          <h1>Posted At {projectDetails?.createdAt.slice(0, 10)} </h1>
+        </div>
         <main className=" w-full flex">
           <form action="" className="flex-1 w-6/12">
             <h2 className="text text-lg p-3"> Project name:</h2>
@@ -72,8 +79,20 @@ export default function ProjectDetails(props) {
             </div>
             <div className="flex justify-evenly mt-6"></div>
           </form>
-          <div className="flex-1 m-5 bg-black">
-            <h1>gggggg</h1>
+          <div className="flex-1 m-5 bg-black rounded-lg h-3/6 ">
+            <img
+              src={`http://localhost:3001/api${projectDetails?.imageURL}`}
+              id="file"
+              name="file"
+              alt=""
+              className="w-full  rounded-lg h-3/6"
+              onClick={() => {
+                setSelectedImage(
+                  `http://localhost:3001/api${projectDetails?.imageURL}`
+                );
+                toggleModal();
+              }}
+            />
           </div>
         </main>
         <div className="flex justify-center mt-5">
@@ -81,6 +100,9 @@ export default function ProjectDetails(props) {
             <button onClick={togglePopup}>Cancel</button>
           </div>
         </div>
+        {modalOpen && (
+          <ImageModal imageUrl={selectedImage} toggleModal={toggleModal} />
+        )}
       </div>
     </div>
   );
