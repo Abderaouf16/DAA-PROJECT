@@ -55,6 +55,9 @@ header{
  
 }
 @media (max-width: 767px) {
+  .title{
+    font-size: 23px;
+  }
   .hamborger{
     display: block;
   

@@ -60,7 +60,6 @@ export default function Header() {
             className="text-black title   pr-2  font-bold  pl-5  "
             href="/home"
           >
-            {" "}
             Archi World
           </a>
           <ul className={open ? "nav_items active " : "nav_items"}>
