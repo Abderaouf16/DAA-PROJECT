@@ -18,4 +18,5 @@ router.delete("/:id", deleteProject);
 router.patch("/:id", upload.single('image'), updateProject);
 // GET a single Project by it's ID
 router.get("/:id", getProject);
+
 export default router

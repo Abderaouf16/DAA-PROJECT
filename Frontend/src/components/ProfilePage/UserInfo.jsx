@@ -21,7 +21,7 @@ export default function UserInfo() {
         <div className=" h-3/5 w-7/12 m-auto flex flex-col">
           <div className="flex justify-center w-full text-2xl items-center">
             <div className="">
-              <h2 className="big-title font-bold text-3xl text-white text-left items-center  justify-center">
+              <h2 className="big-title_two font-bold text-3xl text-white text-left items-center  justify-center">
                 Personal Information
               </h2>
             </div>

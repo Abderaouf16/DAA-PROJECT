@@ -140,7 +140,7 @@ export default function Projects() {
             {user && (
               <div className="">
                 <button
-                  className=" bg-white text-black  my-4 rounded-lg px-12"
+                  className=" bg-white text-black  my-4 rounded-lg px-12  hover:scale-110 transition-all duration-500"
                   onClick={togglePopup}
                 >
                   Add Project
@@ -167,7 +167,7 @@ export default function Projects() {
                   key={project._id}
                   className="flex flex-wrap sm:justify-start justify-center gap-8"
                 >
-                  <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+                  <div className="flex flex-col w-[250px] p-4  hover:scale-110 transition-all duration-500 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
                     <div className="">
                       <h1 className="text-white ">{project.posterName} </h1>
                     </div>
@@ -176,8 +176,8 @@ export default function Projects() {
                         {project.createdAt.slice(0, 10)}
                       </h1>
                     </div>
-                    <div className="relative w-full h-56 group">
-                      <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
+                    <div className="relative w-full h-56 group mt-2">
+                      <div className="absolute inset-0 justify-center items-center  group-hover:flex"></div>
                       <img
                         src={`http://localhost:3001/api${project.imageURL}`}
                         id="file"
@@ -187,16 +187,16 @@ export default function Projects() {
                       />
                     </div>
                     <div className=" flex flex-col ">
-                      <p className=" p-2 font-semibold text-lg text-white truncate ">
+                      <p className=" p-2  font-semibold text-lg text-white truncate ">
                         {project.ProjectName}
                       </p>
                     </div>
                     <div className=" flex flex-col ">
-                      <p className=" p-2 font-semibold text-lg text-white truncate">
+                      <p className="p-1 px-2   font-normal text-md text-white truncate">
                         {project.description}
                       </p>
                     </div>
-                    <div className="flex justify-center items-center m-2">
+                    <div className="flex justify-center items-center mx-2 mt-2">
                       <div className="  bg-white rounded-md w-6/12 flex justify-center items-center ">
                         <button
                           onClick={() => togglePopupDetails(project._id)}

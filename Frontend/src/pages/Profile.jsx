@@ -103,7 +103,7 @@ export default function Profile() {
             <UserInfo />
             <div className="  h-3/5 w-9/12 m-auto py-10">
               <div className=" flex justify-center ">
-                <h2 className="big-title font-bold text-3xl text-white text-left items-center  ">
+                <h2 className="big-title_two font-bold text-3xl text-white text-left items-center  ">
                   Projects Added
                 </h2>
               </div>
@@ -114,7 +114,7 @@ export default function Profile() {
                       key={project._id}
                       className="flex flex-wrap sm:justify-start justify-center gap-8"
                     >
-                      <div className="flex flex-col w-[250px] p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
+                      <div className="flex flex-col w-[250px]  hover:scale-110 transition-all duration-500 p-4 bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg cursor-pointer">
                         <div className="">
                           <h1 className="text-white ">{project.posterName} </h1>
                         </div>
@@ -123,14 +123,14 @@ export default function Profile() {
                             {project.createdAt.slice(0, 10)}
                           </h1>
                         </div>
-                        <div className="relative w-full h-56 group">
-                          <div className="absolute inset-0 justify-center items-center bg-black bg-opacity-50 group-hover:flex"></div>
+                        <div className="relative w-full h-56 group mt-2">
+                          <div className="absolute inset-0 justify-center items-center  group-hover:flex"></div>
                           <img
                             src={`http://localhost:3001/api${project?.imageURL}`}
                             id="file"
                             name="file"
                             alt=""
-                            className="w-full h-full rounded-lg"
+                            className="w-full h-full rounded-lg object-cover"
                             onClick={() => {
                               setSelectedImage(
                                 `http://localhost:3001/api${projectDetails?.imageURL}`
@@ -149,8 +149,8 @@ export default function Profile() {
                             {project.description}
                           </p>
                         </div>
-                        <div className="flex   justify-around items-center ">
-                          <div className="  bg-white rounded-md w-6/12 flex justify-center items-center ">
+                        <div className="flex  mt-3 justify-around items-center ">
+                          <div className="  bg-white rounded-md w-2/5 flex justify-center items-center ">
                             <button
                               className="p-2 "
                               onClick={() => togglePopup(project._id)}
