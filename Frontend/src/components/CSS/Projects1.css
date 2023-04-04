@@ -104,7 +104,10 @@ input[type="search"]::-webkit-search-cancel-button {
 
 
 
-  /*    dccdcdecdecedcec*/ 
+.imgContainer{
+     max-height: 500px;
+} 
+
 
 @media (max-width: 800px) {
     .inputContainer{
@@ -114,6 +117,15 @@ input[type="search"]::-webkit-search-cancel-button {
        font-size: 30px;
        align-items: center;
        justify-content: center;
+    }
+    .main{
+        flex-direction: column;
+    }
+    .form{
+        width: 100%;
+    }
+    .button_cancel{
+        width: 50%;
     }
 }
 
@@ -152,6 +164,8 @@ input[type="search"]::-webkit-search-cancel-button {
 form h2{
     font-family: "DM Serif Display", serif;
 }
+
+
 @media (max-width:900px) {
     .popup-iner{
         width: 90%;

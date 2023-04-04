@@ -10,24 +10,29 @@ export default function UpdateProjectPopup(props) {
 
   const [projectName, setProjectName] = useState("");
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState(null);
 
   const EditProduct = async (event) => {
     event.preventDefault();
 
     // console.log(selectedProjectId);
 
-    const data = {
-      description: description,
-      ProjectName: projectName,
-    };
+    // const data = {
+    //   description: description,
+    //   ProjectName: projectName,
+    //   image: image
+    // };
+    const data = new FormData();
+    data.append("description", description);
+    data.append("ProjectName", projectName);
+    data.append("image", image);
 
+    data.enctype = "multipart/form-data";
     fetch(`http://localhost:3001/api/projects/${selectedProjectId}`, {
       method: "PATCH",
       mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+
+      body: data,
     })
       .then((response) => response.json())
       .then((data) => {
@@ -79,8 +84,8 @@ export default function UpdateProjectPopup(props) {
                   setImage(e.target.files[0]);
                 }}
                 type="file"
-                name="fileToUpload"
-                id="fileToUpload"
+                name="file"
+                id="file"
                 class=" p-2 rounded-md  ml-4 text-sm w-10/12 "
               />
             </div>

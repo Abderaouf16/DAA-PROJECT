@@ -63,8 +63,8 @@ export default function ProjectDetails(props) {
         <div className=" my-3">
           <h1>Posted At {projectDetails?.createdAt.slice(0, 10)} </h1>
         </div>
-        <main className=" w-full flex">
-          <form action="" className="flex-1 w-6/12">
+        <main className="main w-full flex">
+          <form action="" className=" form flex-1 w-6/12">
             <h2 className="text text-lg p-3"> Project name:</h2>
             <div className=" ml-5 flex flex-col   bg-white/5 bg-opacity-80 backdrop-blur-sm animate-slideup rounded-lg ">
               <h1 className="  px-3 py-3 overflow-hidden break-words">
@@ -79,13 +79,13 @@ export default function ProjectDetails(props) {
             </div>
             <div className="flex justify-evenly mt-6"></div>
           </form>
-          <div className="flex-1 m-5 bg-black rounded-lg h-3/6 ">
+          <div className="  flex-1 m-5 bg-black rounded-lg h-3/6 ">
             <img
               src={`http://localhost:3001/api${projectDetails?.imageURL}`}
               id="file"
               name="file"
               alt=""
-              className="w-full  rounded-lg h-3/6"
+              className="imgContainer w-full  rounded-lg h-3/6"
               onClick={() => {
                 setSelectedImage(
                   `http://localhost:3001/api${projectDetails?.imageURL}`
@@ -96,7 +96,7 @@ export default function ProjectDetails(props) {
           </div>
         </main>
         <div className="flex justify-center mt-5">
-          <div className="border-[1px] w-3/12 flex justify-center   ">
+          <div className=" button_cancel border-[1px] w-3/12 flex justify-center   ">
             <button onClick={togglePopup}>Cancel</button>
           </div>
         </div>

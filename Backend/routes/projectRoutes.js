@@ -15,7 +15,7 @@ router.get("/postedBy/:postedBy", getProjectsByUser);
 //delete a Project by it's ID
 router.delete("/:id", deleteProject);
 //  Update a Project by it's id
-router.patch("/:id", updateProject);
+router.patch("/:id", upload.single('image'), updateProject);
 // GET a single Project by it's ID
 router.get("/:id", getProject);
 export default router

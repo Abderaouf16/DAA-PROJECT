@@ -1,6 +1,9 @@
 import Project from "../models/projects.js";
 import User from "../models/User.js";
 import mongoose from "mongoose";
+import fs from 'fs'
+import { fileURLToPath } from "url";
+import path from "path";
 
 // create projects
 export const createProject = async (req, res) => {
@@ -83,10 +86,12 @@ export const deleteProject = async (req, res) => {
 
 // update a project by id
 export const updateProject = async (req, res) => {
-  console.log(req.body);
+
   const { id } = req.params;
   
   const updates = req.body;
+  const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
   try {
     const project = await Project.findById(id);
@@ -95,6 +100,22 @@ export const updateProject = async (req, res) => {
       return res.status(404).json({ error: "Project not found" });
     }
 
+    
+      // if (req.file) {
+      //   // delete old image if it exists
+      //   if (project.imageURL) {
+      //     fs.unlinkSync(path.resolve(__dirname, `../uploads/${project.imageURL}`));
+      //   }
+      //   // set the new image URL
+      //   updates.imageURL = `/images/${req.file.filename}`;
+      // }
+    
+
+    
+   if (req.file) {
+      project.imageURL = `/images/${req.file.filename}`;
+    }
+  
     Object.assign(project, updates);
 
     const updatedProject = await project.save();

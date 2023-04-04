@@ -183,7 +183,7 @@ export default function Projects() {
                         id="file"
                         name="file"
                         alt=""
-                        className="w-full h-full rounded-lg"
+                        className="w-full h-full rounded-lg  object-cover"
                       />
                     </div>
                     <div className=" flex flex-col ">
