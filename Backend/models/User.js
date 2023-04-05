@@ -20,15 +20,7 @@ const UserSchema = new mongoose.Schema(
       required: true,
       minlength: 6
     },
-   
-    // friends: {
-    //   type: Array,
-    //   default: [],
-    // },
-    // location: String,
-    // occupation: String,
-    // viewedProfile: Number,
-    // impressions: Number,
+
   },
   
   { timestamps: true }   /* will give us the time when it's created */

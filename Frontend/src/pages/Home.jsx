@@ -1,5 +1,5 @@
 import React from "react";
-import final from "../assets/final.jpg";
+import final from "../assets/daily.jpg";
 import logo from "../assets/logo.png";
 import Header from "../components/Header/Header";
 import home2 from "../components/CSS/home.css";

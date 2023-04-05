@@ -10,10 +10,10 @@ export default function ImageModal({ imageUrl, toggleModal }) {
         <img src={imageUrl} alt="" />
         {/* <button onClick={toggleModal} className='bg-white text-black p-2 rounded-lg'>Close</button> */}
         <FontAwesomeIcon
-            className="  text-2xl exite  p-2 "
-            icon={faTimes}
-            onClick={toggleModal}
-          />
+          className="  text-2xl exite  p-2 border-2  "
+          icon={faTimes}
+          onClick={toggleModal}
+        />
       </div>
     </div>
   );

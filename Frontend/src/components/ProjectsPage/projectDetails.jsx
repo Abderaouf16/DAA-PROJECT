@@ -96,7 +96,7 @@ export default function ProjectDetails(props) {
           </div>
         </main>
         <div className="flex justify-center mt-5">
-          <div className=" button_cancel border-[1px] w-3/12 flex justify-center   ">
+          <div className=" button_cancel border-[1px] w-3/12 flex justify-center hover:scale-110 transition-all duration-500  ">
             <button onClick={togglePopup}>Cancel</button>
           </div>
         </div>

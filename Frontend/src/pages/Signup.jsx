@@ -82,9 +82,8 @@ export default function Signup() {
             <button
               disabled={isLoading}
               type="submit"
-              className="btn bg-white text-black  rounded-md "
+              className="btn bg-white text-black  rounded-md  hover:scale-110 transition-all duration-500"
             >
-              {" "}
               Signup
             </button>
             {error && (

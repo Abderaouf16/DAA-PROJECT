@@ -23,15 +23,13 @@ export const register = async (req, res) => {
     const savedUser = await newUser.save();
 
     const token = jwt.sign({ _id: newUser._id }, process.env.TOKEN_SECRET);
-    res
-      .status(200)
-      .send({
-        id: newUser._id,
-        username: newUser.username,
-        email: newUser.email,
-        token: token,
-        createdAt: newUser.createdAt,
-      });
+    res.status(200).send({
+      id: newUser._id,
+      username: newUser.username,
+      email: newUser.email,
+      token: token,
+      createdAt: newUser.createdAt,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -55,15 +53,13 @@ export const loginUser = async (req, res) => {
     console.log(userExixte._id);
     const token = jwt.sign({ _id: userExixte._id }, process.env.TOKEN_SECRET);
     delete User.password;
-    res
-      .status(200)
-      .send({
-        _id: userExixte._id,
-        email: userExixte.email,
-        username: userExixte.username,
-        token: token,
-        createdAt: userExixte.createdAt,
-      });
+    res.status(200).send({
+      _id: userExixte._id,
+      email: userExixte.email,
+      username: userExixte.username,
+      token: token,
+      createdAt: userExixte.createdAt,
+    });
   } catch (err) {
     res.status(500).json({ error: err.message });
     console.log(err);

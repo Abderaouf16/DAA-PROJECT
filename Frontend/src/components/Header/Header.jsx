@@ -17,7 +17,6 @@ export default function Header() {
   const { user } = useAuthContext();
 
   // FOR UPDATING THE STATE "LOGOUT"
-
   const { logout } = useLogout();
   const handleClick = () => {
     logout();
@@ -68,9 +67,6 @@ export default function Header() {
             </li>
             <li className="text-black">
               <a href="/projects">Projects</a>
-            </li>
-            <li className="text-black">
-              <a href="/profile">profile</a>
             </li>
             {!user && (
               <>
