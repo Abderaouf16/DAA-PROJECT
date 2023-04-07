@@ -49,7 +49,7 @@ export const getProjects = async (req, res) => {
   }
 };
 
-// fetch products by user (postedBy)
+// fetch projects by user (postedBy)
 export const getProjectsByUser = async (req, res) => {
   const { postedBy } = req.params;
   try {
@@ -57,7 +57,7 @@ export const getProjectsByUser = async (req, res) => {
     if (!projects || projects.length === 0) {
       return res
         .status(404)
-        .json({ error: "No product posted by this user yet!" });
+        .json({ error: "No project posted by this user yet!" });
     }
     res.status(200).json(projects);
   } catch (error) {
@@ -71,7 +71,7 @@ export const deleteProject = async (req, res) => {
   console.log("project", id);
   try {
     if (!Project) {
-      return res.status(404).json({ error: "Product not found!" });
+      return res.status(404).json({ error: "Project not found!" });
     }
 
     await Project.deleteOne({ _id: id });
@@ -99,14 +99,6 @@ export const updateProject = async (req, res) => {
       return res.status(404).json({ error: "Project not found" });
     }
 
-    // if (req.file) {
-    //   // delete old image if it exists
-    //   if (project.imageURL) {
-    //     fs.unlinkSync(path.resolve(__dirname, `../uploads/${project.imageURL}`));
-    //   }
-    //   // set the new image URL
-    //   updates.imageURL = `/images/${req.file.filename}`;
-    // }
 
     if (req.file) {
       project.imageURL = `/images/${req.file.filename}`;

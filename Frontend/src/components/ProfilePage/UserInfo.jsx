@@ -6,11 +6,7 @@ export default function UserInfo() {
   const { user } = useAuthContext();
   const [editCredentials, setEditCredentials] = useState(false);
   const [editValue, setEditValue] = useState();
-
-  const showEdit = () => {
-    setEditCredentials(!editCredentials);
-  };
-
+  
   const handeleValueChange = (e) => {
     setEditValue(e.target.value);
   };
